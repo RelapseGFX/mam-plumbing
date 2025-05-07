@@ -1,0 +1,55 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "halyard micro";
+    background: #0e0e0e;
+}
+
+.slider {
+    width: 100%;
+    cursor: grab;
+}
+
+.slider-wrapper {
+    white-space: nowrap;
+}
+
+.slider-item {
+    display: inline-block;
+    width: 40vw;
+    padding: 3vw;
+}
+
+.slider-item figure {
+    position: relative;
+    padding-bottom: 50%;
+    overflow: hidden;
+}
+
+.slider-item figure img {
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+}
+
+.slider-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20vw;
+    height: 2px;
+    margin: 2em;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.slider-progress-bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(0);
+    transform-origin: 0 0;
+}

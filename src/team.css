@@ -1,0 +1,136 @@
+.team__wrapper {
+    background: #2547A0;
+}
+
+.team {
+--grid-gutter: calc(var(--sqs-mobile-site-gutter, 6vw) - 11.0px);
+  --cell-max-width: calc( ( var(--sqs-site-max-width, 1500px) - (11.0px * (8 - 1)) ) / 8 );
+  display: grid;
+  position: relative;
+  grid-area: 1/1/-1/-1;
+  grid-template-rows: repeat(32,minmax(24px, auto));
+  grid-template-columns:
+    minmax(var(--grid-gutter), 1fr)
+    repeat(8, minmax(0, var(--cell-max-width)))
+    minmax(var(--grid-gutter), 1fr);
+  row-gap: 11.0px;
+  column-gap: 11.0px;
+}
+
+.team__member-1 {
+    grid-area: 6 / 3 / 16 / 9;
+    z-index: 0;
+}
+
+.team__heading {
+    grid-area: 2 / 2 / 8 / 10;
+    z-index: 2;
+}
+
+.team__dots-left {
+    grid-area: 6 / 1 / 14 / 7;
+    z-index: 6;
+}
+
+.team__content-1 {
+    grid-area: 16 / 2 / 18 / 10;
+    z-index: 1;
+}
+
+.team__member-2 {
+    grid-area: 19 / 3 / 28 / 9;
+    z-index: 3;
+}
+
+.team__dots-right {
+    grid-area: 19 / 1 / 26 / 7;
+    z-index: 7;
+}
+
+.team__content-2 {
+    grid-area: 28 / 2 / 30 / 10;
+    z-index: 4;
+}
+
+.team__button {
+    grid-area: 30 / 4 / 32 / 8;
+    z-index: 5;
+}
+
+.team img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team__wrapper .team  {
+    color: white;
+}
+
+.team .section__title {
+    color: white;
+    letter-spacing: -0.96px;
+}
+
+.team .team__heading .section__title {
+    font-size: var(--fs-700);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+
+  
+    .team {
+      --grid-gutter: calc(var(--sqs-site-gutter, 4vw) - 11.0px);
+      --cell-max-width: calc( ( var(--sqs-site-max-width, 1500px) - (11.0px * (24 - 1)) ) / 24 );
+      --inset-padding: 0vw;
+      --row-height-scaling-factor: 0.0215;
+      --container-width: min(var(--sqs-site-max-width, 1500px), calc(100vw - var(--sqs-site-gutter, 4vw) * 2 - var(--inset-padding) ));
+      grid-template-rows: repeat(23,minmax(calc(var(--container-width) * var(--row-height-scaling-factor)), auto));
+      grid-template-columns:
+        minmax(var(--grid-gutter), 1fr)
+        repeat(24, minmax(0, var(--cell-max-width)))
+        minmax(var(--grid-gutter), 1fr);
+    }
+
+    .team__member-1 {
+        grid-area: 6 / 6 / 17 / 14;
+        z-index: 1;
+    }
+    
+    .team__heading {
+        grid-area: 2 / 6 / 5 / 22;
+        z-index: 4;
+    }
+    
+    .team__dots-left {
+        grid-area: 5 / 4 / 14 / 10;
+        z-index: 2;
+    }
+    
+    .team__content-1 {
+        grid-area: 17 / 6 / 19 / 14;
+        z-index: 3;
+    }
+    
+    .team__member-2 {
+        grid-area: 6 / 14 / 17 / 22;
+        z-index: 5;
+    }
+    
+    .team__dots-right {
+        grid-area: 8 / 21 / 17 / 27;
+        z-index: 6;
+    }
+    
+    .team__content-2 {
+        grid-area: 17 / 14 / 19 / 22;
+        z-index: 7;
+    }
+    
+    .team__button {
+        grid-area: 20 / 12 / 22 / 16;
+        z-index: 8;
+    }
+  }
