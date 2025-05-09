@@ -1,70 +1,68 @@
-const wrapper = document.querySelector(".projects__wrapper");
-const carousel = document.querySelector(".carousel__projects");
-const arrowBtns = document.querySelectorAll(".projects__wrapper i");
-const firstCardWidth = carousel.querySelector(".project").offsetWidth;
-const carouselChildrens = [...carousel.children];
+const wrapperProjects = document.querySelector(".projects__wrapper");
+const carouselProjects = document.querySelector(".carousel__projects");
+const arrowBtnsProjects = document.querySelectorAll(".projects__wrapper i");
+const firstCardWidthProjects = carouselProjects.querySelector(".project").offsetWidth;
+const carouselChildrenProjects = [...carouselProjects.children];
 
-let isDragging = false, startX, startScrollLeft, timeoutId;
+let isDraggingProjects = false, startXProjects, startScrollLeftProjects, timeoutIdProjects;
 
-let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+let cardPerViewProjects = Math.round(carouselProjects.offsetWidth / firstCardWidthProjects);
 
-carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-  carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+carouselChildrenProjects.slice(-cardPerViewProjects).reverse().forEach(card => {
+  carouselProjects.insertAdjacentHTML("afterbegin", card.outerHTML);
 });
 
-carouselChildrens.slice(0, cardPerView).forEach(card => {
-  carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+carouselChildrenProjects.slice(0, cardPerViewProjects).forEach(card => {
+  carouselProjects.insertAdjacentHTML("beforeend", card.outerHTML);
 });
 
-arrowBtns.forEach(btn => {
+arrowBtnsProjects.forEach(btn => {
   btn.addEventListener("click", () => {
-    carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
+    carouselProjects.scrollLeft += btn.id === "left" ? -firstCardWidthProjects : firstCardWidthProjects;
   });
 });
 
-const dragStart = (e) => {
-  isDragging = true;
-  carousel.classList.add("dragging");
-  startX = e.pageX;
-  startScrollLeft = carousel.scrollLeft;
+const dragStartProjects = (e) => {
+  isDraggingProjects = true;
+  carouselProjects.classList.add("dragging");
+  startXProjects = e.pageX;
+  startScrollLeftProjects = carouselProjects.scrollLeft;
 }
 
-const dragging = (e) => {
-  if(!isDragging) return;
-  carousel.scrollLeft = startScrollLeft = (e.pageX - startX);
+const draggingProjects = (e) => {
+  if (!isDraggingProjects) return;
+  carouselProjects.scrollLeft = startScrollLeftProjects = (e.pageX - startXProjects);
 }
 
-const dragStop = (e) => {
-  isDragging = false;
-  carousel.classList.remove("dragging");
+const dragStopProjects = (e) => {
+  isDraggingProjects = false;
+  carouselProjects.classList.remove("dragging");
 }
 
-const autoPlay = () => {
-  if(window.innerWidth < 800) return;
-  timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 7500);
+const autoPlayProjects = () => {
+  if (window.innerWidth < 800) return;
+  timeoutIdProjects = setTimeout(() => carouselProjects.scrollLeft += firstCardWidthProjects, 7500);
 }
-autoPlay();
+autoPlayProjects();
 
-const infiniteScroll = () => {
-  if(carousel.scrollLeft === 0) {
-    carousel.classList.add("no-transition");
-    carousel.scrollLeft = carousel.scrollWidth - ( 2 * carousel.offsetWidth);
-    carousel.classList.remove("no-transition");
+const infiniteScrollProjects = () => {
+  if (carouselProjects.scrollLeft === 0) {
+    carouselProjects.classList.add("no-transition");
+    carouselProjects.scrollLeft = carouselProjects.scrollWidth - (2 * carouselProjects.offsetWidth);
+    carouselProjects.classList.remove("no-transition");
+  } else if (Math.ceil(carouselProjects.scrollLeft) === carouselProjects.scrollWidth - carouselProjects.offsetWidth) {
+    carouselProjects.classList.add("no-transition");
+    carouselProjects.scrollLeft = carouselProjects.offsetWidth;
+    carouselProjects.classList.remove("no-transition");
   }
 
-  else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth){
-    carousel.classList.add("no-transition");
-    carousel.scrollLeft = carousel.offsetWidth;
-    carousel.classList.remove("no-transition");
-  }
-
-  clearTimeout(timeoutId);
-  if(!wrapper.matches(":hover")) autoPlay();
+  clearTimeout(timeoutIdProjects);
+  if (!wrapperProjects.matches(":hover")) autoPlayProjects();
 }
 
-carousel.addEventListener("mousedown", dragStart);
-carousel.addEventListener("mousemove", dragging);
-document.addEventListener("mouseup", dragStop);
-carousel.addEventListener("scroll", infiniteScroll);
-wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
-wrapper.addEventListener("mouseleave", autoPlay);
+carouselProjects.addEventListener("mousedown", dragStartProjects);
+carouselProjects.addEventListener("mousemove", draggingProjects);
+document.addEventListener("mouseup", dragStopProjects);
+carouselProjects.addEventListener("scroll", infiniteScrollProjects);
+wrapperProjects.addEventListener("mouseenter", () => clearTimeout(timeoutIdProjects));
+wrapperProjects.addEventListener("mouseleave", autoPlayProjects);

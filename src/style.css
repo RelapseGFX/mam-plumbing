@@ -890,29 +890,49 @@ header {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 0 2vw;
-    background: #212020;
+    padding: 3.3vmax 2vw 6vmax 2vw;
 }
 
+.carousel__heading {
+    padding-bottom: 40px;
+}
 
 .projects__wrapper {
-    max-width: 96.04%;
     width: 100%;
     position: relative;
 }
 
 .projects__wrapper i {
     position: absolute;
-    height: 50px;
-    width: 50px;
-    background: #fff;
+    height: 60px;
+    width: 60px;
+    background: #000;
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
     border-radius: 50%;
     cursor: pointer;
     top: 50%;
+    transform: translateY(50%);
+    opacity: 0.7;
     font-size: 1.25rem;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: all .3s ease;
+}
+
+.projects__wrapper i:hover {
+    opacity: 1;
+}
+
+.projects__wrapper i svg {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    top: 50%;
+    transform: translateY(-50%);
+
 }
 
 .projects__wrapper i:first-child {
@@ -924,7 +944,6 @@ header {
 }
 
 .projects__wrapper .carousel__projects {
-    margin: 8.33333em 0;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% / 3) - 12px);
@@ -934,7 +953,7 @@ header {
     scroll-behavior: smooth;
     scrollbar-width: none;
     list-style-type: none;
-    padding: 0;
+    margin: 0;
     display: -ms-grid;
     width: 100%;
     box-sizing: border-box;
@@ -942,6 +961,7 @@ header {
     -ms-grid-rows: 1fr;
     grid-template-rows: 1fr;
     transition: opacity .3s;
+    padding: 0 2vw;
 }
 
 .carousel__projects::-webkit-scrollbar {
@@ -991,23 +1011,18 @@ header {
 }
 
 .project h2 {
-    color: white;
     font-weight: 700;
     font-size: calc((1.6 - 1) * calc(.012 * min(100vh, 900px)) + 1rem);
-    margin: 30px 0 5px;
 }
 
 .project span {
-    color: #fff;
     font-size: 1rem;
     text-align: center;
     margin: 1rem 0;
 }
 
 .projects__wrapper .section__title {
-    color: white;
     font-size: var(--fs-700);
-    text-align: center;
 }
 
 .carousel__buttons {
@@ -1143,7 +1158,7 @@ header {
     z-index: 0;
 }
 
-.story__inner-heading {
+.upper__heading {
 	display: flex;
 	height: 100%;
 	width: 100%;
@@ -1222,7 +1237,7 @@ header {
         z-index: 3;
     }
 
-	.story__inner-heading {
+	.upper__heading {
 		justify-content: center;
 	}
   }
